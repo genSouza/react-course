@@ -1,3 +1,4 @@
+import React from "react";
 import ExpensesComponent from "./components/Expenses.component";
 
 function App() {

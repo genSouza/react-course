@@ -1,6 +1,8 @@
-import "./Expenses.css";
+/* eslint-disable react/prop-types */
+import React from 'react';
 import ExpenseItemComponent from "./ExpenseItem.component";
 import CardComponent from "./Card.component";
+import "./Expenses.css";
 
 function ExpensesComponent(props) {
   const itens = props.expenses.map((expense, index) => (

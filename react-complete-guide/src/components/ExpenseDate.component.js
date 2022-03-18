@@ -1,4 +1,7 @@
+/* eslint-disable react/prop-types */
+import React from 'react';
 import "./ExpenseDate.css";
+
 function ExpenseDateComponent(props) {
   const month = props.date.toLocaleString("pt-BR", { month: "long" });
   const day = props.date.toLocaleString("pt-BR", { day: "2-digit" });
