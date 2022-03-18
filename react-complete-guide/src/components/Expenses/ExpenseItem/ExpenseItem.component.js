@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import CardComponent from "./Card.component";
-import ExpenseDateComponent from "./ExpenseDate.component";
+import CardComponent from "../../UI/Card.component";
+import ExpenseDateComponent from "../ExpenseDate/ExpenseDate.component";
 import "./ExpenseItem.css";
 
 function ExpenseItemComponent(props) {

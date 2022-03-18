@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import ExpenseItemComponent from "./ExpenseItem.component";
-import CardComponent from "./Card.component";
+import ExpenseItemComponent from './ExpenseItem/ExpenseItem.component';
+import CardComponent from "../UI/Card.component";
 import "./Expenses.css";
 
 function ExpensesComponent(props) {
