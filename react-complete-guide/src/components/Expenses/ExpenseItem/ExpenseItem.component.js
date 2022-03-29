@@ -1,14 +1,16 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useState } from "react";
 import CardComponent from "../../UI/Card.component";
 import ExpenseDateComponent from "../ExpenseDate/ExpenseDate.component";
 import "./ExpenseItem.css";
 
 function ExpenseItemComponent(props) {
-  let title = props.title;
+  const [title, setTitle] = useState(props.title);
+
   const clickHandler = () => {
-    title = "updated!";
+    setTitle("updated!");
   };
+  
   return (
     <CardComponent className="expense-item">
       <ExpenseDateComponent date={props.date} />
