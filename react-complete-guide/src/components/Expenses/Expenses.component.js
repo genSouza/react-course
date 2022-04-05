@@ -13,7 +13,7 @@ function ExpensesComponent(props) {
     setFilteredYear(selectedYear);
   };
 
-  const itens = props.expenses.map((expense, index) => (
+  const items = props.expenses.map((expense, index) => (
     <ExpenseItemComponent
       key={index}
       title={expense.title}
@@ -28,7 +28,7 @@ function ExpensesComponent(props) {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {itens}
+        {items}
       </CardComponent>
     </div>
   );
