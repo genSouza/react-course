@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+
+import "./ExpenseForm.css";
+const ExpenseForm = (props) => {
+
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState(new Date());
@@ -27,7 +29,8 @@ const ExpenseForm = () => {
       date: new Date(date),
     };
 
-    console.log(expenseData);
+    // eslint-disable-next-line react/prop-types
+    props.onSaveExpenseData(expenseData);
     clearInputs();
   };
 
