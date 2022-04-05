@@ -1,10 +1,18 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import ExpenseItemComponent from './ExpenseItem/ExpenseItem.component';
+import React, { useState } from "react";
+import ExpenseItemComponent from "./ExpenseItem/ExpenseItem.component";
 import CardComponent from "../UI/Card.component";
 import "./Expenses.css";
+import ExpensesFilter from "./ExpenseFilter/ExpenseFilter";
 
 function ExpensesComponent(props) {
+  const [filteredYear, setFilteredYear] = useState("2021");
+
+  const filterChangeHandler = (selectedYear) => {
+    console.log("Expenses.js");
+    setFilteredYear(selectedYear);
+  };
+
   const itens = props.expenses.map((expense, index) => (
     <ExpenseItemComponent
       key={index}
@@ -13,7 +21,17 @@ function ExpensesComponent(props) {
       date={expense.date}
     />
   ));
-  return <CardComponent className="expenses"> {itens} </CardComponent>;
+  return (
+    <div>
+      <CardComponent className="expenses">
+        <ExpensesFilter
+          selected={filteredYear}
+          onChangeFilter={filterChangeHandler}
+        />
+        {itens}
+      </CardComponent>
+    </div>
+  );
 }
 
 export default ExpensesComponent;
