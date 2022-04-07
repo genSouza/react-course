@@ -7,13 +7,18 @@ import ExpensesFilter from "./ExpenseFilter/ExpenseFilter";
 
 function ExpensesComponent(props) {
   const [filteredYear, setFilteredYear] = useState("2021");
+  const [expensesList, setExpensesList] = useState(props.expenses);
 
   const filterChangeHandler = (selectedYear) => {
-    console.log("Expenses.js");
+    const sortedExpenseList = props.expenses.filter(
+      (expense) => expense.date.getFullYear().toString() === selectedYear
+    );
+
     setFilteredYear(selectedYear);
+    setExpensesList(sortedExpenseList);
   };
 
-  const items = props.expenses.map((expense, index) => (
+  const items = expensesList.map((expense, index) => (
     <ExpenseItemComponent
       key={index}
       title={expense.title}
@@ -21,6 +26,13 @@ function ExpensesComponent(props) {
       date={expense.date}
     />
   ));
+
+  let expensesMessage = <p>No expenses found.</p>;
+
+  if (expensesList.length > 0) {
+    expensesMessage = items;
+  }
+
   return (
     <div>
       <CardComponent className="expenses">
@@ -28,7 +40,7 @@ function ExpensesComponent(props) {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {items}
+        {expensesMessage}
       </CardComponent>
     </div>
   );
