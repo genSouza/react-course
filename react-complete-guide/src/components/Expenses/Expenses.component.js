@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
-import ExpenseItemComponent from "./ExpenseItem/ExpenseItem.component";
+import ExpenseList from "./ExpenseList/ExpenseList";
 import CardComponent from "../UI/Card.component";
 import "./Expenses.css";
 import ExpensesFilter from "./ExpenseFilter/ExpenseFilter";
@@ -18,21 +18,6 @@ function ExpensesComponent(props) {
     setExpensesList(sortedExpenseList);
   };
 
-  const items = expensesList.map((expense, index) => (
-    <ExpenseItemComponent
-      key={index}
-      title={expense.title}
-      amount={expense.amount}
-      date={expense.date}
-    />
-  ));
-
-  let expensesMessage = <p>No expenses found.</p>;
-
-  if (expensesList.length > 0) {
-    expensesMessage = items;
-  }
-
   return (
     <div>
       <CardComponent className="expenses">
@@ -40,7 +25,7 @@ function ExpensesComponent(props) {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {expensesMessage}
+        <ExpenseList items={expensesList} />
       </CardComponent>
     </div>
   );
