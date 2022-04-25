@@ -1,9 +1,8 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
-
 
 import "./ExpenseForm.css";
 const ExpenseForm = (props) => {
-
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState(new Date());
@@ -39,26 +38,6 @@ const ExpenseForm = (props) => {
     setAmount("");
     setDate("");
   };
-  // const [userInput, setUserInput] = useState({
-  //   title: "",
-  //   amount: 0.01,
-  //   date: new Date(),
-  // });
-
-  // const titleChangeHandler = (event) => {
-
-  //   setUserInput((prevState) => {
-  //     return { ...prevState, title: event.target.value };
-  //   });
-  // };
-
-  // const amountChangeHandler = (event) => {
-  //   setUserInput({ ...userInput, amount: event.target.value });
-  // };
-
-  // const dateChangeHandler = (event) => {
-  //   setUserInput({ ...userInput, date: event.target.value });
-  // };
 
   return (
     <form>
@@ -89,6 +68,9 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={props.onCancel}>
+          Cancel
+        </button>
         <button type="submit" onClick={submitHandler}>
           Add Expense
         </button>
