@@ -6,11 +6,21 @@ import styles from "./AddUser.module.css";
 const AddUser = (props) => {
   useState();
   const [enteredUserName, setEnteredUserName] = useState("");
-  const [enteredUserAge, setEnteredUserAge] = useState(0);
+  const [enteredUserAge, setEnteredUserAge] = useState("");
 
   const addUserHandler = (event) => {
     event.preventDefault();
+    if(enteredUserName.trim().length === 0 || enteredUserAge.trim().length === 0) {
+        return;
+    }
+
+    if(+enteredUserAge < 1) {
+        return;
+    }
+
     console.log(enteredUserAge, enteredUserName);
+    setEnteredUserAge("");
+    setEnteredUserName("");
   };
 
   const userNameChangeHandler = (event) => {
@@ -29,9 +39,15 @@ const AddUser = (props) => {
           type="text"
           id="username"
           onChange={userNameChangeHandler}
+          value={enteredUserName}
         ></input>
         <label htmlFor="age">Age (years)</label>
-        <input type="number" id="age" onChange={userAgeChangeHandler}></input>
+        <input
+          type="number"
+          id="age"
+          onChange={userAgeChangeHandler}
+          value={enteredUserAge}
+        ></input>
         <Button type="submit">Add User</Button>
       </form>
     </Card>
